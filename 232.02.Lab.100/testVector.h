@@ -93,33 +93,33 @@ public:
       test_resize_fourZero();
       test_resize_fourSixDefault();
       test_resize_fourSixValue();
-      //test_reserve_emptyZero();
-      //test_reserve_emptyTen();
-      //test_reserve_fourZero();
-      //test_reserve_fourFour();
-      //test_reserve_fourTen();
-      //test_reserve_standardZero();
-      //test_reserve_standardTen();
+      test_reserve_emptyZero();
+      test_reserve_emptyTen();
+      test_reserve_fourZero();
+      test_reserve_fourFour();
+      test_reserve_fourTen();
+      test_reserve_standardZero();
+      test_reserve_standardTen();
 
       // Remove
-      //test_popback_empty();
-      //test_popback_full();
-      //test_popback_partiallyFilled();
-      //test_clear_empty();
-      //test_clear_full();
-      //test_clear_partiallyFilled();
-      //test_shrink_empty();
-      //test_shrink_toEmpty();
-      //test_shrink_standard();
-      //test_shrink_twoExtraSlots();
+      test_popback_empty();
+      test_popback_full();
+      test_popback_partiallyFilled();
+      test_clear_empty();
+      test_clear_full();
+      test_clear_partiallyFilled();
+      test_shrink_empty();
+      test_shrink_toEmpty();
+      test_shrink_standard();
+      test_shrink_twoExtraSlots();
 
       // Status
-      //test_size_empty();
-      //test_size_full();
-      //test_empty_empty();
-      //test_empty_full();
-      //test_capacity_empty();
-      //test_capacity_full();
+      test_size_empty();
+      test_size_full();
+      test_empty_empty();
+      test_empty_full();
+      test_capacity_empty();
+      test_capacity_full();
 
       report("Vector");
    }

@@ -123,9 +123,9 @@ public:
    // Status
    //
 
-   size_t  size()          const { return 999;}
-   size_t  capacity()      const { return 999;}
-   bool empty()            const { return true;}
+   size_t  size()          const { return numElements;}
+   size_t  capacity()      const { return numCapacity;}
+   bool empty()            const { return numElements == 0;}
    
    // adjust the size of the buffer
    
@@ -415,7 +415,10 @@ void vector <T> :: resize(size_t newElements, const T & t)
 template <typename T>
 void vector <T> :: reserve(size_t newCapacity)
 {
-   numCapacity = 99;
+   if (newCapacity > numCapacity)
+   {
+      numCapacity = newCapacity;
+   }
 }
 
 /***************************************
@@ -427,7 +430,23 @@ void vector <T> :: reserve(size_t newCapacity)
 template <typename T>
 void vector <T> :: shrink_to_fit()
 {
-   
+   if (numElements == 0)
+   {
+      delete[] data;
+      data = nullptr;
+      numCapacity = 0;
+   }
+   else if (numCapacity > numElements) 
+   {
+      T* newData = new T[numElements];
+      for (size_t i = 0; i < numElements; i++) 
+      {
+         newData[i] = data[i];
+      }
+      delete[] data;
+      data = newData;
+      numCapacity = numElements; // Update capacity
+   }
 }
 
 /***************************************
@@ -439,7 +458,16 @@ void vector <T> :: shrink_to_fit()
 template <typename T>
 void vector <T> :: pop_back()
 {
-   
+   if (numElements > 0)
+   {
+      --numElements;
+      if (numElements == 0)
+      {
+         delete[] data;
+         data = nullptr;
+         numCapacity = 0;
+      }
+   }
 }
 
 /***************************************
@@ -451,7 +479,7 @@ void vector <T> :: pop_back()
 template <typename T>
 void vector <T> :: clear()
 {
-   
+      numElements = 0;
 }
 
 
